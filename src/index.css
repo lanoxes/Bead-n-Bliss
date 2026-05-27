@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-lavender-50: #FDF4FF;
+  --color-lavender-100: #F5D0FE;
+  --color-lavender-200: #E9D5FF;
+  --color-lavender-300: #C084FC;
+  --color-lavender-400: #A21CAF;
+  --color-lavender-500: #C026D3;
+  --color-lavender-600: #86198F;
+  --color-lavender-700: #701A75;
+  --color-lavender-900: #4A044E;
+  
+  --color-magenta-50: #FDF4FF;
+  --color-magenta-100: #F5D0FE;
+  --color-magenta-200: #E9D5FF;
+  --color-magenta-300: #FFEDD5;
+  --color-magenta-400: #F472B6;
+  --color-magenta-500: #D946EF;
+  --color-magenta-600: #C084FC;
+  --color-magenta-700: #A21CAF;
+  --color-magenta-900: #4A044E;
+}
+
+/* Custom scrollbar to keep it looking cute and consistent */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f3ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1adfb;
+  border-radius: 9999px;
+  border: 2px solid #f6f3ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a17ff6;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+

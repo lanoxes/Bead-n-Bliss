@@ -1,0 +1,6 @@
+{
+  "name": "Bead n Bliss",
+  "description": "Temukan keindahan dalam setiap manik-manik. Website promosi aksesoris manik-manik yang imut dan elegan dengan pilihan cincin, gelang, dan strap HP custom berkualitas tinggi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
