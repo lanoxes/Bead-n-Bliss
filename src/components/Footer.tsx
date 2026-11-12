@@ -74,6 +74,9 @@ export default function Footer() {
                 <a href="#tentang-kami" className="text-lavender-300 hover:text-white transition-colors">Filosofi Kami</a>
               </li>
               <li>
+                <a href="#about-ceo" className="text-lavender-300 hover:text-white transition-colors">About Me (Chaerunisa Ramadanti)</a>
+              </li>
+              <li>
                 <a href="#testimoni" className="text-lavender-300 hover:text-white transition-colors">Testimoni Pelanggan</a>
               </li>
               <li>

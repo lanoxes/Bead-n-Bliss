@@ -9,6 +9,7 @@ export default function Header() {
     { label: 'Beranda', href: '#beranda' },
     { label: 'Koleksi Produk', href: '#produk' },
     { label: 'Filosofi Kami', href: '#tentang-kami' },
+    { label: 'About Me (Chaerunisa Ramadanti)', href: '#about-ceo' },
     { label: 'Testimoni', href: '#testimoni' },
     { label: 'Cara Pesan', href: '#cara-pesan' },
   ];

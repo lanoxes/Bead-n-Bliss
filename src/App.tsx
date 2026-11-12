@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import ProductCard from './components/ProductCard';
 import AboutUs from './components/AboutUs';
+import AboutCeo from './components/AboutCeo';
 import Testimonials from './components/Testimonials';
 import ShippingPayment from './components/ShippingPayment';
 import Footer from './components/Footer';
@@ -29,6 +30,9 @@ export default function App() {
 
         {/* Philosophy - About Us Section */}
         <AboutUs />
+
+        {/* About CEO / Founder Section */}
+        <AboutCeo />
 
         {/* Reviews - Customer Testimonials Section */}
         <Testimonials />
