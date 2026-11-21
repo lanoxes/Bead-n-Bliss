@@ -60,6 +60,24 @@ export const PRODUCTS: Product[] = [
       'Memiliki Warna Yang Beragam'
     ],
     style: 'Elegant & Modern Chic'
+  },
+  {
+    id: 'embroidery-bracelet',
+    name: 'Embroidery Bracelet',
+    description: 'Gelang pita sulam motif bunga dengan detail charm kupu-kupu yang manis dan ringan. Ukurannya fleksibel dan pas dipakai di berbagai kesempatan.',
+    longDescription: 'Tampil rapi dan manis tanpa kesan berlebihan. Embroidery Bracelet memadukan pita sulam bermotif bunga lembut dengan tepian berenda serta detail charm kupu-kupu yang anggun. Dilengkapi pengait kokoh dan rantai pengatur panjang agar pas serta nyaman di berbagai ukuran pergelangan tangan—cocok untuk pelajar, pekerja, hingga kado kecil yang berkesan. Dengan Rp 7.000 saja, Anda mendapatkan aksesori harian yang mudah dipadukan dengan berbagai gaya berpakaian.',
+    price: 'Rp 7.000',
+    image: '/assets/aistudio/IMG-20261121-WA0072_d37bf270.jpg',
+    images: [
+      '/assets/aistudio/IMG-20261121-WA0072_d37bf270.jpg'
+    ],
+    tags: ['New Arrival', 'Adjustable', 'All Ages'],
+    materials: [
+      'Pita sulam motif bunga rapi dengan tepian berenda lembut',
+      'Dilengkapi rantai pengatur panjang (adjustable) & charm kupu-kupu',
+      '5 pilihan warna pastel & netral (Putih, Coklat, Pink, Lilac, Biru)'
+    ],
+    style: 'Sweet Floral & Casual'
   }
 ];
 

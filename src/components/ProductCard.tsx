@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, Heart, Star, Check, ShoppingBag, Eye, X, MessageCircle, Instagram } from 'lucide-react';
+import { Sparkles, Heart, Check, ShoppingBag, Eye, X, MessageCircle, Instagram } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data';
 
-export default function ProductCard() {
+interface ProductCardProps {
+  targetProductId?: string | null;
+  onTargetHandled?: () => void;
+}
+
+export default function ProductCard({ targetProductId, onTargetHandled }: ProductCardProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -13,6 +18,16 @@ export default function ProductCard() {
     setSelectedProduct(product);
     setActiveImage(product.image);
   };
+
+  useEffect(() => {
+    if (targetProductId) {
+      const target = PRODUCTS.find((p) => p.id === targetProductId);
+      if (target) {
+        openProduct(target);
+      }
+      onTargetHandled?.();
+    }
+  }, [targetProductId, onTargetHandled]);
 
   const toggleFavorite = (productId: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -45,28 +60,31 @@ export default function ProductCard() {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {PRODUCTS.map((product) => {
             const isFav = favorites.includes(product.id);
             
             // Extract core theme styling for each product card from the design HTML
-            let cardStyleClass = "bg-lavender-50/50 hover:bg-lavender-50 rounded-[40px] border-4 border-white shadow-xl";
+            let cardStyleClass = "bg-lavender-50/50 hover:bg-lavender-50 rounded-[36px] border-4 border-white shadow-xl";
             if (product.id === 'cincin-manik') {
-              cardStyleClass = "bg-[#F5D0FE] text-lavender-900 rounded-[40px] border-4 border-white shadow-xl hover:bg-[#f2c7fc] transition-colors";
+              cardStyleClass = "bg-[#F5D0FE] text-lavender-900 rounded-[36px] border-4 border-white shadow-xl hover:bg-[#f2c7fc] transition-colors";
             } else if (product.id === 'gelang-manik') {
-              cardStyleClass = "bg-[#E0F2FE] text-lavender-900 rounded-[40px] border-4 border-white shadow-xl hover:bg-[#cee9fc] transition-colors";
+              cardStyleClass = "bg-[#E0F2FE] text-lavender-900 rounded-[36px] border-4 border-white shadow-xl hover:bg-[#cee9fc] transition-colors";
             } else if (product.id === 'strap-hp-manik') {
-              cardStyleClass = "bg-gradient-to-r from-[#E9D5FF] to-[#F5D0FE] text-lavender-900 rounded-[40px] border-4 border-white shadow-xl hover:brightness-95 transition-all";
+              cardStyleClass = "bg-gradient-to-r from-[#E9D5FF] to-[#F5D0FE] text-lavender-900 rounded-[36px] border-4 border-white shadow-xl hover:brightness-95 transition-all";
+            } else if (product.id === 'embroidery-bracelet') {
+              cardStyleClass = "bg-[#FCE7F3] text-lavender-900 rounded-[36px] border-4 border-white shadow-xl hover:bg-[#fbcfe8] transition-colors";
             }
 
             return (
               <motion.div
                 key={product.id}
+                id={`product-${product.id}`}
                 whileHover={{ y: -6 }}
-                className={`group relative p-6 flex flex-col justify-between transition-all duration-300 ${cardStyleClass}`}
+                className={`group relative p-5 flex flex-col justify-between transition-all duration-300 ${cardStyleClass}`}
               >
                 {/* Sale / Style Badge */}
-                <span className="absolute top-8 left-8 z-10 px-3.5 py-1.5 rounded-full bg-magenta-500/95 text-white font-sans font-bold text-xs shadow-md tracking-wide">
+                <span className="absolute top-7 left-7 z-10 px-3 py-1 rounded-full bg-magenta-500/95 text-white font-sans font-bold text-[11px] shadow-md tracking-wide max-w-[65%] truncate">
                   {product.style}
                 </span>
 
@@ -74,9 +92,9 @@ export default function ProductCard() {
                 <button
                   onClick={(e) => toggleFavorite(product.id, e)}
                   aria-label="Add to wishlist"
-                  className="absolute top-8 right-8 z-10 p-2.5 rounded-full bg-white/90 backdrop-blur-sm text-lavender-400 hover:text-magenta-500 shadow-md border border-lavender-100 transition-all duration-200"
+                  className="absolute top-7 right-7 z-10 p-2 rounded-full bg-white/90 backdrop-blur-sm text-lavender-400 hover:text-magenta-500 shadow-md border border-lavender-100 transition-all duration-200"
                 >
-                  <Heart size={18} className={`${isFav ? 'fill-magenta-500 text-magenta-500' : ''}`} />
+                  <Heart size={16} className={`${isFav ? 'fill-magenta-500 text-magenta-500' : ''}`} />
                 </button>
 
                 {/* Main Product Image Container */}
@@ -132,11 +150,11 @@ export default function ProductCard() {
                     {product.description}
                   </p>
 
-                  <div className="border-t border-lavender-100/80 pt-4 flex items-center gap-2.5">
+                  <div className="border-t border-lavender-100/80 pt-4 flex items-center gap-2">
                     {/* View Specs */}
                     <button
                       onClick={() => openProduct(product)}
-                      className="flex items-center justify-center gap-1 px-4 py-2.5 border-2 border-lavender-200 hover:border-magenta-500/70 text-lavender-600 hover:text-magenta-600 rounded-full font-sans font-bold text-xs transition-all duration-300 cursor-pointer"
+                      className="flex items-center justify-center gap-1 px-3.5 py-2.5 border-2 border-lavender-200 hover:border-magenta-500/70 text-lavender-600 hover:text-magenta-600 rounded-full font-sans font-bold text-xs transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0"
                     >
                       <Eye size={14} />
                       <span>Spek</span>
@@ -144,10 +162,10 @@ export default function ProductCard() {
                     {/* Order Now (CTA linking to both IG & WA) */}
                     <button
                       onClick={() => openProduct(product)}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-lavender-500 to-magenta-500 hover:from-lavender-600 hover:to-magenta-600 text-white rounded-full font-sans font-black text-xs shadow-md shadow-lavender-200 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-lavender-500 to-magenta-500 hover:from-lavender-600 hover:to-magenta-600 text-white rounded-full font-sans font-black text-xs shadow-md shadow-lavender-200 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                     >
                       <ShoppingBag size={14} />
-                      <span>Pesan Sekarang</span>
+                      <span>Pesan</span>
                     </button>
                   </div>
                 </div>
